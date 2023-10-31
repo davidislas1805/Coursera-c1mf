@@ -50,33 +50,67 @@ void clear_all(char * ptr, unsigned int size){
 }
 
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length){
+  if( src == NULL || dst == NULL ){
+    return NULL;
+  }
+ 
+  uint8_t temp_data[length];
+  
+  for(uint32_t i = 0; i < (2 * length); i++){
+    if (i < length)*(temp_data + i) = *(src + i);
+    else *(dst + ( i - length) ) = *(temp_data +  i - length); 
+  }
   
   return dst;
 };
 
 uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length){
-  
+  if( src == NULL || dst == NULL ){
+    return NULL;
+  }
+  for(uint32_t i = 0; i < length; i++){
+    *(dst + i) = *(src + i);
+  }
+
   return dst;
 };
 
 uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value){
-  
+  if( src == NULL ) return NULL;
+  for( uint32_t i = 0; i < length; i++ ){
+    *(src + i) = value;
+  }
+
   return src;
 };
 
 uint8_t * my_memzero(uint8_t * src, size_t length){
-  
+  if( src == NULL ) return NULL;
+  for( uint32_t i = 0; i < length; i++ ){
+    *(src+i) = 0;
+  }
+
   return src;
 };
 
 uint8_t * my_reverse(uint8_t * src, size_t length){
-  
+  if( src == NULL ) return NULL;
+  uint8_t temp_data;
+  for (uint32_t i = 0; i < length / 2; i++){
+    temp_data = *(src + i);
+    *(src + i) = *(src + length - 1 - i);
+    *(src + length - 1 - i) = temp_data;
+  }
   return src;
 };
 
 int32_t * reserve_words(size_t length){
-  
-  return 0;
+  int32_t * reserve_ptr;
+
+  reserve_ptr = (int32_t *) malloc(length*sizeof(int32_t));
+
+  if( reserve_ptr == NULL ) return NULL;
+  return reserve_ptr;
 };
 
 void free_words( uint32_t * src){
