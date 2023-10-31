@@ -12,7 +12,12 @@
 #------------------------------------------------------------------------------
 # Makefile to compile and/or link a simple project into the desired platform.
 #
-# Use: make [TARGET] PLATFORM=[HOST/MSP432]
+# Use: 
+#     	make build PLATFORM=[HOST/MSP432]
+#		make compile-all PLATFORM=[HOST/MSP432]
+#		make clean
+#
+#***********PLATFORM MUST BE DECLARED AND SET WHEN RUNNING THE BUILD/COMPILE-ALL COMMAND
 #
 # Build Targets:
 #      Provided the desired Platform, the respective files can be generated out of the c-program implementation files:
